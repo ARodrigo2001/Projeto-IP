@@ -64,8 +64,6 @@ def menu_turma():
 4 - Deleta
 0 - Menu Principal
 ''')
-
-
 #--------------------------------------------------------------------------------------------
                                         #FUNÇÕES INPUT
 def pedir_nome():                           
@@ -85,10 +83,10 @@ def pedir_codturma():
 
 def pedir_periodo():
     return(input('Digite o período(dígito):'))
-
-menu_principal()
-consulta = int(input('Quais dados gostaria de alterar?'))
+#--------------------------------------------------------------------------------------------
 while True:
+    menu_principal()
+    consulta = int(input('Quais dados gostaria de alterar?'))
     if consulta == 0:
         break
     if consulta == 1:
@@ -96,7 +94,7 @@ while True:
         menu_professor()
         c = 0
 #-------------------------------------------------------------------------------------------
-                                  #FUNÇÃO CRIAR CADASTRO
+                                  #FUNÇÃO CRIAR CADASTRO PROFESSOR
         def create():                                                                                                       
             global professores
             global c
@@ -120,7 +118,7 @@ while True:
                 
                 c = 0
 #--------------------------------------------------------------------------------------------
-                                 #FUNÇÃO ATUALIZAR CADASTRO
+                                 #FUNÇÃO ATUALIZAR CADASTRO PROFESSOR
         def update():                                                                                                   
             global professores
             global c
@@ -144,7 +142,7 @@ while True:
                 elif c == 0:
                     print('---- Professor ainda não encontrado... ----')
 #--------------------------------------------------------------------------------------------
-                                #FUNÇÃO DELETAR CADASTRO
+                                #FUNÇÃO DELETAR CADASTRO PROFESSOR
         def delete():                                                                                                   
             global professores
             print('---- Insira o CPF do cadastro a ser deletado ----')
