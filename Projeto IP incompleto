@@ -1,18 +1,20 @@
 #Projeto IP
 
-print('''
+def menu_principal():
+    return print('''
 ----- MENU PRINCIPAL -----
 
 1 - Dados de Professores
 2 - Dados de Alunos
 3 - Dados de Turmas
 4 - Dados de Disciplinas
+0 - Sair
 ''')
-consulta = int(input())
-if consulta == 1:
-    professores = []
-    def menu_professor():
-        return print('''
+#------------------------
+      #FUNÇÕES MENU
+
+def menu_professor():           
+    return print('''
 ----- MENU -----
 
 * PROFESSORES *
@@ -21,76 +23,165 @@ if consulta == 1:
 2 - Atualiza
 3 - Consulta
 4 - Deleta
-0 - Sai
+0 - Menu Principal
 ''')
-    menu_professor()
-      
-    
-    def pedir_nome():                           #Função pedir nome
-        return(input('Digite o nome:'))
-    
-    def pedir_CPF():                            #Função pedir CPF
-        return(input('Digite o CPF:'))
+#------------------------
+def menu_aluno():                           
+    return print('''
+----- MENU -----
 
-    def pedir_departamento():                   #Função pedir departamento
-        return(input('Digite o departamento:'))
+* ALUNOS *
 
-    def create():                               #Função criar cadastro
-        global professores
-        print('---- Insira os dados a serem cadastrados ----')
-        nome_professor = pedir_nome()
-        cpf_professor = pedir_CPF()
-        departamento_professor = pedir_departamento()
-        professores.append([nome_professor, cpf_professor, departamento_professor])
-        print('---- Cadastro Realizado ----')
+1 - Adiciona
+2 - Atualiza
+3 - Consulta
+4 - Deleta
+0 - Menu Principal
+''')
+#------------------------
+def menu_disciplina():                           
+    return print('''
+----- MENU -----
+
+* DISCIPLINAS *
+
+1 - Adiciona
+2 - Atualiza
+3 - Consulta
+4 - Deleta
+0 - Menu Principal
+''')
+#-----------------------
+def menu_turma():                           
+    return print('''
+----- MENU -----
+
+* TURMAS *
+
+1 - Adiciona
+2 - Atualiza
+3 - Consulta
+4 - Deleta
+0 - Menu Principal
+''')
+
+
+#--------------------------------------------------------------------------------------------
+                                        #FUNÇÕES INPUT
+def pedir_nome():                           
+    return(input('Digite o nome:'))
     
-    def update():                               #Função atualizar cadastro
-        global professores
-        print('---- Insira os dados a serem atualizados ----')
-        nome_professor = pedir_nome()
-        cpf_professor = pedir_CPF()
-        departamento_professor = pedir_departamento()
-        for p, e in enumerate(professores):
-            if e[0] == nome_professor:
-                print('---- Professor encontrado ----')
-                novo_nome = input('Digite o novo nome:')
-                novo_cpf = input('Digite o novo CPF:')
-                novo_departamento = input('Digite o novo departamento:')
-                professores[p][0] = novo_nome
-                professores[p][1] = novo_cpf
-                professores[p][2] = novo_departamento
-                print('---- Cadastro Atualizado ----')
+def pedir_CPF():                            
+    return(input('Digite o CPF(apenas dígitos):'))
+
+def pedir_departamento():                   
+    return(input('Digite o departamento:'))
+
+def pedir_codigo():
+    return(input('Digite o código:'))
+
+def pedir_codturma():
+    return(input('Digite o código da turma:'))
+
+def pedir_periodo():
+    return(input('Digite o período(dígito):'))
+
+menu_principal()
+consulta = int(input('Quais dados gostaria de alterar?'))
+while True:
+    if consulta == 0:
+        break
+    if consulta == 1:
+        professores = []
+        menu_professor()
+        c = 0
+#-------------------------------------------------------------------------------------------
+                                  #FUNÇÃO CRIAR CADASTRO
+        def create():                                                                                                       
+            global professores
+            global c
+            print('---- Insira os dados a serem cadastrados ----')
+            nome_professor = pedir_nome()
+            cpf_professor = pedir_CPF()
+            while cpf_professor.isdigit() is False:
+                cpf_professor = pedir_CPF()
+            departamento_professor = pedir_departamento()
+            if len(professores) == 0:
+                professores.append([nome_professor, cpf_professor, departamento_professor])
+                print('---- Cadastro Realizado ----')
             else:
-                print('---- Professor não encontrado ----')
-    def delete():
-        global professores
-        print('---- Insira o CPF do cadastro a ser deletado ----')
-        cpf_professor = pedir_CPF()
-        valor = False
-        for p, e in enumerate(professores):
-            if e[1] == cpf_professor:
-                del professores[p]
-                print('---- Cadastro Deletado ----')
-                valor = True
-            
-        if valor == False:
-            print('---- Usuário não encontrado ----')
-        
-    
-    while True:
-        v = int(input('Digite a operação:'))
-        if v == 0:
-            break
-        if v == 1:
-            create()
-            continue
-        if v == 2:
-            update()
-            continue
-        if v == 3:
+                for p, e in enumerate(professores):
+                    if e[1] == cpf_professor:
+                        print('---- Professor já cadastrado ----')
+                        c = 1
+                if c != 1:
+                    professores.append([nome_professor, cpf_professor, departamento_professor])
+                    print('---- Cadastro Realizado ----')
+                
+                c = 0
+#--------------------------------------------------------------------------------------------
+                                 #FUNÇÃO ATUALIZAR CADASTRO
+        def update():                                                                                                   
+            global professores
+            global c
+            print('---- Insira os dados a serem atualizados ----')
+            cpf_professor = pedir_CPF()
+            while cpf_professor.isdigit() is False:
+                cpf_professor = pedir_CPF()
             for p, e in enumerate(professores):
-                print('Professor(a): %s    CPF: %s     Departamento: %s' %(e[0], e[1], e[2]))
-            continue
-        if v == 4:
-            delete()
-           
+                if e[1] == cpf_professor:
+                    print('---- Professor encontrado ----')
+                    novo_nome = input('Digite o novo nome:')
+                    novo_cpf = input('Digite o novo CPF:')
+                    while novo_cpf.isdigit() is False:
+                        novo_cpf = pedir_CPF()
+                    novo_departamento = input('Digite o novo departamento:')
+                    professores[p][0] = novo_nome
+                    professores[p][1] = novo_cpf
+                    professores[p][2] = novo_departamento
+                    print('---- Cadastro Atualizado ----')
+                    c += 1
+                elif c == 0:
+                    print('---- Professor ainda não encontrado... ----')
+#--------------------------------------------------------------------------------------------
+                                #FUNÇÃO DELETAR CADASTRO
+        def delete():                                                                                                   
+            global professores
+            print('---- Insira o CPF do cadastro a ser deletado ----')
+            cpf_professor = pedir_CPF()
+            while cpf_professor.isdigit() is False:
+                cpf_professor = pedir_CPF()
+            c = False
+            for p, e in enumerate(professores):
+            
+                if e[1] == cpf_professor:
+                    del professores[p]
+                    print('---- Cadastro Deletado ----')
+                    c = True
+            
+            if c == False:
+                print('---- Usuário não encontrado ----')
+#--------------------------------------------------------------------------------------------
+                                        #OPERADOR
+    
+        while True:
+            v = int(input('Digite a operação para PROFESSORES:'))
+            if v == 0:
+                break
+            elif v == 1:
+                create()
+                continue
+            elif v == 2:
+                update()
+                continue
+            elif v == 3:
+                for p, e in enumerate(professores):
+                    print('Professor(a): %s    CPF: %s     Departamento: %s' %(e[0], e[1], e[2]))
+                continue
+            elif v == 4:
+                delete()
+
+#--------------------------------------------------------------------------------------------
+
+
+        
