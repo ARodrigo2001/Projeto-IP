@@ -264,7 +264,7 @@ while True:
                 if c == False:
                     print('---- Aluno não encontrado ----')
 #--------------------------------------------------------------------------------------------                    
-                                #FUNLÃO DELETAR CADASTRO ALUNO
+                                #FUNÇÃO DELETAR CADASTRO ALUNO
         def deleteA():                                                                                                   
             global alunos
             if len(alunos) == 0:
