@@ -137,10 +137,14 @@ while True:
                     professores[p][1] = novo_cpf
                     professores[p][2] = novo_departamento
                     print('---- Cadastro Atualizado ----')
-                    c += 1
-                elif c == 0:
-                    print('---- Professor ainda não encontrado... ----')
-#--------------------------------------------------------------------------------------------
+                    c = 1
+                    if c != 1:
+                        print('---- Professor ainda não encontrado... ----')
+                    
+                c = 0
+        
+                
+#-------------------------------------------------------------------------------------------
                                 #FUNÇÃO DELETAR CADASTRO PROFESSOR
         def delete():                                                                                                   
             global professores
@@ -231,6 +235,7 @@ while True:
                     c += 1
                 elif c == 0:
                     print('---- Aluno ainda não encontrado... ----')
+                c = 0
 #--------------------------------------------------------------------------------------------                    
                                 #FUNLÃO DELETAR CADASTRO ALUNO
         def deleteA():                                                                                                   
