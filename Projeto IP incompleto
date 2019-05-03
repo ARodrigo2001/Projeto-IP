@@ -232,9 +232,9 @@ while True:
                     alunos[p][0] = novo_nome
                     alunos[p][1] = novo_cpf
                     print('---- Cadastro Atualizado ----')
-                    c += 1
-                elif c == 0:
-                    print('---- Aluno ainda não encontrado... ----')
+                    c = 1
+                    if c != 1:
+                        print('---- Aluno ainda não encontrado... ----')
                 c = 0
 #--------------------------------------------------------------------------------------------                    
                                 #FUNLÃO DELETAR CADASTRO ALUNO
@@ -317,9 +317,9 @@ while True:
                     disciplina[p][0] = novo_nome
                     disciplina[p][1] = novo_codigo
                     print('---- Cadastro Atualizado ----')
-                    c += 1
-                elif c == 0:
-                    print('---- Disciplina ainda não encontrada... ----')
+                    c = 1
+                    if c != 1:
+                        print('---- Disciplina ainda não encontrada... ----')
 #--------------------------------------------------------------------------------------------
                                 #FUNÇÃO DELETAR CADASTRO DISCIPLINA
         def deleteD():                                                                                                   
