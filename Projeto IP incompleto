@@ -520,4 +520,15 @@ while True:
                 continue
             elif v == 4:
                 deleteT()
+                
+                
+#BUGS:                
+#Em memória:
+	1 -Na hora do cadastro, armazenar todos os CPFs de Professores e Alunos em Turmas
+
+Em arquivo:
+	1 - Atualizar cadastro em arquivo, ele não substitui o dado, ele apenas adiciona um novo.
+	2 - Colocar a função deletar cadastro no arquivo
+	3 - Na hora do cadastro, armazenar todos os CPFs de Professores e Alunos em Turmas(Na hora de consultar todas as turmas, ele printa apenas o ultimo CPF digitado)
+	
 
