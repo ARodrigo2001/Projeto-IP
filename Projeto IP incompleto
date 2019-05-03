@@ -100,6 +100,7 @@ while True:
             nome_professor = pedir_nome()
             cpf_professor = pedir_CPF()
             while cpf_professor.isdigit() is False:
+                print('---- CPF Inválido ----')
                 cpf_professor = pedir_CPF()
             departamento_professor = pedir_departamento()
             if len(professores) == 0:
@@ -129,6 +130,7 @@ while True:
             print('---- Insira o CPF do cadastro a ser atualizado ----')
             cpf_professor = pedir_CPF()
             while cpf_professor.isdigit() is False:
+                print('---- CPF Inválido ----')
                 cpf_professor = pedir_CPF()
             for p, e in enumerate(professores):
                 if e[1] == cpf_professor:
@@ -159,6 +161,7 @@ while True:
             print('---- Insira o CPF do cadastro a ser deletado ----')
             cpf_professor = pedir_CPF()
             while cpf_professor.isdigit() is False:
+                print('---- CPF Inválido ----')
                 cpf_professor = pedir_CPF()
             c = False
             for p, e in enumerate(professores):
@@ -207,6 +210,7 @@ while True:
             nome_aluno = pedir_nome()
             cpf_aluno = pedir_CPF()
             while cpf_aluno.isdigit() is False:
+                print('---- CPF Inválido ----')
                 cpf_aluno = pedir_CPF()
             if len(alunos) == 0:
                 arquivo_a = open('alunos.txt', 'a')
@@ -235,6 +239,7 @@ while True:
             print('---- Insira o CPF do cadastro a ser atualizado ----')
             cpf_aluno = pedir_CPF()
             while cpf_aluno.isdigit() is False:
+                print('---- CPF Inválido ----')
                 cpf_aluno = pedir_CPF()
             for p, e in enumerate(alunos):
                 if e[1] == cpf_aluno:
@@ -257,6 +262,7 @@ while True:
             print('---- Insira o CPF do cadastro a ser deletado ----')
             cpf_aluno = pedir_CPF()
             while cpf_aluno.isdigit() is False:
+                print('---- CPF Inválido ----')
                 cpf_aluno = pedir_CPF()
             c = False
             for p, e in enumerate(alunos):
