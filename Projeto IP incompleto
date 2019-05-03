@@ -209,6 +209,9 @@ while True:
             while cpf_aluno.isdigit() is False:
                 cpf_aluno = pedir_CPF()
             if len(alunos) == 0:
+                arquivo_a = open('alunos.txt', 'a')
+                arquivo_a.write('%s / %s\n' %(nome_aluno, cpf_aluno))
+                arquivo_a.close()
                 alunos.append([nome_aluno, cpf_aluno])
                 print('---- Cadastro Realizado ----')
             else:
@@ -217,6 +220,9 @@ while True:
                         print('---- Aluno já cadastrado ----')
                         c = 1
                 if c != 1:
+                    arquivo_a = open('alunos.txt', 'a')
+                    arquivo_a.write('%s / %s\n' %(nome_aluno, cpf_aluno))
+                    arquivo_a.close()
                     alunos.append([nome_aluno, cpf_aluno])
                     print('---- Cadastro Realizado ----')
                 
@@ -298,6 +304,9 @@ while True:
             nome = pedir_nome()
             codigo = pedir_codigo()
             if len(disciplina) == 0:
+                arquivo_d = open('disciplinas.txt', 'a')
+                arquivo_d.write('%s / %s\n' %(nome,codigo))
+                arquivo_d.close()
                 disciplina.append([nome, codigo])
                 print('---- Cadastro Realizado ----')
             else:
@@ -306,6 +315,9 @@ while True:
                         print('---- Disciplina já cadastrado ----')
                         c = 1
                 if c != 1:
+                    arquivo_d = open('disciplinas.txt', 'a')
+                    arquivo_d.write('%s / %s\n' %(nome,codigo))
+                    arquivo_d.close()
                     disciplina.append([nome, codigo])
                     print('---- Cadastro Realizado ----')
                 
