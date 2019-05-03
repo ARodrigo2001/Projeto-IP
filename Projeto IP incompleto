@@ -153,7 +153,7 @@ while True:
                         professores[p][0] = novo_nome
                         professores[p][1] = novo_cpf
                         professores[p][2] = novo_departamento
-                        arquivo_p = open('professores.txt', 'a')
+                        arquivo_p = open('professores.txt', 'w')
                         arquivo_p.write('Nome: %s / CPF: %s / DEP: %s\n' %(novo_nome, novo_cpf, novo_departamento))
                         arquivo_p.close()
                         print('---- Cadastro Atualizado ----')
@@ -176,10 +176,10 @@ while True:
                 for p, e in enumerate(professores):
                     if e[1] == cpf_professor:
                         del professores[p]
-                        print('---- Cadastro Deletado ----')
+                        print('---- Professor Deletado ----')
                         c = True
                 if c == False:
-                    print('---- Cadastro não encontrado ----')
+                    print('---- Professor não encontrado ----')
                           
 #--------------------------------------------------------------------------------------------
                                         #OPERADOR PROFESSORES    
@@ -279,10 +279,10 @@ while True:
                 for p, e in enumerate(alunos):
                     if e[1] == cpf_aluno:
                         del alunos[p]
-                        print('---- Cadastro Deletado ----')
+                        print('---- Aluno Deletado ----')
                         c = True
                 if c == False:
-                    print('---- Cadastro não encontrado ----')
+                    print('---- Aluno não encontrado ----')
 #--------------------------------------------------------------------------------------------
                                     #OPERADOR ALUNOS
     
@@ -353,7 +353,7 @@ while True:
                         novo_codigo = input('Digite o novo código:')
                         disciplina[p][0] = novo_nome
                         disciplina[p][1] = novo_codigo
-                        print('---- Cadastro Atualizado ----')
+                        print('---- Disciplina Atualizada ----')
                         c = True
                 if c == False:
                     print('---- Disciplina não encontrada ----')                    
@@ -427,7 +427,7 @@ while True:
                 arquivo_t.write('Código: %s / Período: %s / Disciplina: %s / CPF_Professor: %s / CPF_Aluno: %s\n' %(codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno))
                 arquivo_t.close()
                 turmas.append([codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno])
-                print('---- Cadastro Realizado ----')
+                print('---- Cadastro Realizdo ----')
             else:
                 for p, e in enumerate(turmas):
                     if e[0] == codigo_turma:
@@ -473,7 +473,7 @@ while True:
                         turmas[p][2] = nova_disciplina
                         turmas[p][3] = novo_cpf_professor
                         turmas[p][4] = novo_cpf_aluno
-                        print('---- Cadastro Atualizado ----')
+                        print('---- Turma Atualizada ----')
                         c = True
                 if c == False:
                     print('---- Turma não encontrada ----')
@@ -485,7 +485,17 @@ while True:
             if len(turmas) == 0:
                 print('---- Não há nenhuma turma cadastrada ----')
             else:
-                print('---- Insira o CPF do cadastro a ser atualizado ----')                                           
+                print('---- Insira o código da turma a ser atualizada ----')
+                codigo_turma = pedir_codturma()
+                c = False
+                for p, e in enumerate(turmas):
+                    if e[0] == codigo_turma:
+                        del turmas[p]
+                        print('---- Turma Deletada ----')
+                        c = True
+                if c == False:
+                    print('---- Turma não encontrada ----')
+                
 #----------------------------------------------------------------------------------------------------------------------------------------------
                               #OPERADOR TURMAS
         while True:
