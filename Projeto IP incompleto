@@ -141,7 +141,9 @@ while True:
                     professores[p][0] = novo_nome
                     professores[p][1] = novo_cpf
                     professores[p][2] = novo_departamento
-                    
+                    arquivo_p = open('professores.txt', 'a')
+                    arquivo_p.write('%s / %s / %s\n' %(novo_nome, novo_cpf, novo_departamento))
+                    arquivo_p.close()
                     print('---- Cadastro Atualizado ----')
                     c = 1
                     if c != 1:
