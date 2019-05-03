@@ -1,5 +1,4 @@
 #Projeto IP
-
 def menu_principal():
     return print('''
 ----- MENU PRINCIPAL -----
@@ -104,6 +103,9 @@ while True:
                 cpf_professor = pedir_CPF()
             departamento_professor = pedir_departamento()
             if len(professores) == 0:
+                arquivo_p = open('professores.txt', 'a')
+                arquivo_p.write('%s / %s / %s\n' %(nome_professor, cpf_professor, departamento_professor))
+                arquivo_p.close()
                 professores.append([nome_professor, cpf_professor, departamento_professor])
                 print('---- Cadastro Realizado ----')
             else:
@@ -112,6 +114,9 @@ while True:
                         print('---- Professor já cadastrado ----')
                         c = 1
                 if c != 1:
+                    arquivo_p = open('professores.txt', 'a')
+                    arquivo_p.write('%s / %s / %s\n' %(nome_professor, cpf_professor, departamento_professor))
+                    arquivo_p.close()
                     professores.append([nome_professor, cpf_professor, departamento_professor])
                     print('---- Cadastro Realizado ----')
                 
@@ -136,6 +141,7 @@ while True:
                     professores[p][0] = novo_nome
                     professores[p][1] = novo_cpf
                     professores[p][2] = novo_departamento
+                    
                     print('---- Cadastro Atualizado ----')
                     c = 1
                     if c != 1:
