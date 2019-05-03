@@ -318,8 +318,9 @@ while True:
                     disciplina[p][1] = novo_codigo
                     print('---- Cadastro Atualizado ----')
                     c = 1
-                    if c != 1:
+                    if c == 0:
                         print('---- Disciplina ainda não encontrada... ----')
+                c = 0
 #--------------------------------------------------------------------------------------------
                                 #FUNÇÃO DELETAR CADASTRO DISCIPLINA
         def deleteD():                                                                                                   
