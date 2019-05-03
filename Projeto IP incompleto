@@ -9,8 +9,8 @@ def menu_principal():
 4 - Dados de Turmas
 0 - Sair
 ''')
-#------------------------
-      #FUNÇÕES MENU
+#-------------------------------------------------------------
+                                      #FUNÇÕES MENU
 
 def menu_professor():           
     return print('''
@@ -89,6 +89,7 @@ def pedir_CPF_professor():
 def pedir_CPF_aluno():
     return (input('Digite o CPF do Aluno(apenas dígitos):'))
 #--------------------------------------------------------------------------------------------
+                                #FUNÇÃO CRIAR CADASTRO PROFESSOR
 while True:
     menu_principal()
     consulta = int(input('Quais dados gostaria de alterar?'))
@@ -98,7 +99,7 @@ while True:
         professores = []
         menu_professor()
         c = 0
-                                  #FUNÇÃO CRIAR CADASTRO PROFESSOR
+                                  
         def create():                                                                                                       
             global professores
             global c
@@ -111,18 +112,18 @@ while True:
             departamento_professor = pedir_departamento()
             if len(professores) == 0:
                 arquivo_p = open('professores.txt', 'a')
-                arquivo_p.write('%s / %s / %s\n' %(nome_professor, cpf_professor, departamento_professor))
+                arquivo_p.write('Nome: %s / CPF: %s / DEP: %s\n' %(nome_professor, cpf_professor, departamento_professor))
                 arquivo_p.close()
                 professores.append([nome_professor, cpf_professor, departamento_professor])
                 print('---- Cadastro Realizado ----')
             else:
                 for p, e in enumerate(professores):
                     if e[1] == cpf_professor:
-                        print('---- Professor já cadastrado ----')
+                        print('---- CPF já cadastrado ----')
                         c = 1
                 if c != 1:
                     arquivo_p = open('professores.txt', 'a')
-                    arquivo_p.write('%s / %s / %s\n' %(nome_professor, cpf_professor, departamento_professor))
+                    arquivo_p.write('Nome: %s / CPF: %s / DEP: %s\n' %(nome_professor, cpf_professor, departamento_professor))
                     arquivo_p.close()
                     professores.append([nome_professor, cpf_professor, departamento_professor])
                     print('---- Cadastro Realizado ----')
@@ -132,72 +133,56 @@ while True:
                                  #FUNÇÃO ATUALIZAR CADASTRO PROFESSOR
         def update():                                                                                                   
             global professores
-            global c
-            print('---- Insira o CPF do cadastro a ser atualizado ----')
-            cpf_professor = pedir_CPF()
-            while cpf_professor.isdigit() is False:
-                print('---- CPF Inválido ----')
+            if len(professores) == 0:
+                print('---- Não há nenhum professor cadastrado ----')
+            else:
+                print('---- Insira o CPF do cadastro a ser atualizado ----')
                 cpf_professor = pedir_CPF()
-            for p, e in enumerate(professores):
-                if e[1] == cpf_professor:
-                    print('---- Professor encontrado ----')
-                    novo_nome = input('Digite o novo nome:')
-                    novo_cpf = input('Digite o novo CPF:')
-                    while novo_cpf.isdigit() is False:
-                        novo_cpf = pedir_CPF()
-                    novo_departamento = input('Digite o novo departamento:')
-                    professores[p][0] = novo_nome
-                    professores[p][1] = novo_cpf
-                    professores[p][2] = novo_departamento
-                    arquivo_p = open('professores.txt', 'a')
-                    arquivo_p.write('%s / %s / %s\n' %(novo_nome, novo_cpf, novo_departamento))
-                    arquivo_p.close()
-                    print('---- Cadastro Atualizado ----')
-                    c = 1
-                    if c != 1:
-                        print('---- Professor ainda não encontrado... ----')
-                    
-                c = 0
-        
-                
+                while cpf_professor.isdigit() is False:
+                    print('---- CPF Inválido ----')
+                    cpf_professor = pedir_CPF()
+                c = False
+                for p, e in enumerate(professores):
+                    if e[1] == cpf_professor:
+                        print('---- Professor encontrado ----')
+                        novo_nome = input('Digite o novo nome:')
+                        novo_cpf = input('Digite o novo CPF:')
+                        while novo_cpf.isdigit() is False:
+                            novo_cpf = pedir_CPF()
+                        novo_departamento = input('Digite o novo departamento:')
+                        professores[p][0] = novo_nome
+                        professores[p][1] = novo_cpf
+                        professores[p][2] = novo_departamento
+                        arquivo_p = open('professores.txt', 'a')
+                        arquivo_p.write('Nome: %s / CPF: %s / DEP: %s\n' %(novo_nome, novo_cpf, novo_departamento))
+                        arquivo_p.close()
+                        print('---- Cadastro Atualizado ----')
+                        c = True
+                if c == False:
+                    print('---- Professor não encontrado ----')                                                                
 #-------------------------------------------------------------------------------------------
                                 #FUNÇÃO DELETAR CADASTRO PROFESSOR
         def delete():                                                                                                   
             global professores
-            print('---- Insira o CPF do cadastro a ser deletado ----')
-            cpf_professor = pedir_CPF()
-            while cpf_professor.isdigit() is False:
-                print('---- CPF Inválido ----')
+            if len(professores) == 0:
+                print('---- Não há nenhum professor cadastrado ----')
+            else:
+                print('---- Insira o CPF do cadastro a ser atualizado ----')
                 cpf_professor = pedir_CPF()
-            c = False
-            for p, e in enumerate(professores):
-            
-                if e[1] == cpf_professor:
-                    del professores[p]
-                    print('---- Cadastro Deletado ----')
-                    c = True
-            
-            if c == False:
-                print('---- Usuário não encontrado ----')
-#-------------------------------------------------------------------------------------------
-                                #FUNÇÃO EXISTE CPF
-        def existe(cpf):
-            global professores
-            try:
-                arquivo.p = open('professores.txt','r')
-                for p, e in professores.readlines():
-                    e[1] = cpf_professor.split('/')[1]
-                    if e[1] == novo_cpf:
-                        return True
-                return False
-            except Exception:
-                print('LISTA VAZIA')
-                return
-                    
-        
+                while cpf_professor.isdigit() is False:
+                    print('---- CPF Inválido ----')
+                    cpf_professor = pedir_CPF()
+                c = False
+                for p, e in enumerate(professores):
+                    if e[1] == cpf_professor:
+                        del professores[p]
+                        print('---- Cadastro Deletado ----')
+                        c = True
+                if c == False:
+                    print('---- Cadastro não encontrado ----')
+                          
 #--------------------------------------------------------------------------------------------
-                                        #OPERADOR PROFESSORES
-    
+                                        #OPERADOR PROFESSORES    
         while True:
             v = int(input('Digite a operação para PROFESSORES:'))
             if v == 0:
@@ -236,66 +221,68 @@ while True:
                 cpf_aluno = pedir_CPF()
             if len(alunos) == 0:
                 arquivo_a = open('alunos.txt', 'a')
-                arquivo_a.write('%s / %s\n' %(nome_aluno, cpf_aluno))
+                arquivo_a.write('Nome: %s / CPF: %s\n' %(nome_aluno, cpf_aluno))
                 arquivo_a.close()
                 alunos.append([nome_aluno, cpf_aluno])
                 print('---- Cadastro Realizado ----')
             else:
                 for p, e in enumerate(alunos):
                     if e[1] == cpf_aluno:
-                        print('---- Aluno já cadastrado ----')
+                        print('---- CPF já cadastrado ----')
                         c = 1
                 if c != 1:
                     arquivo_a = open('alunos.txt', 'a')
-                    arquivo_a.write('%s / %s\n' %(nome_aluno, cpf_aluno))
+                    arquivo_a.write('Nome: %s / CPF: %s\n' %(nome_aluno, cpf_aluno))
                     arquivo_a.close()
                     alunos.append([nome_aluno, cpf_aluno])
                     print('---- Cadastro Realizado ----')
-                
                 c = 0
 #--------------------------------------------------------------------------------------------
                                         #FUNÇÃO ATUALIZAR CADASTRO ALUNO
         def updateA():
             global alunos
-            global c
-            print('---- Insira o CPF do cadastro a ser atualizado ----')
-            cpf_aluno = pedir_CPF()
-            while cpf_aluno.isdigit() is False:
-                print('---- CPF Inválido ----')
+            if len(alunos) == 0:
+                print('---- Não há nenhum aluno cadastrado ----')
+            else:
+                print('---- Insira o CPF do cadastro a ser atualizado ----')
                 cpf_aluno = pedir_CPF()
-            for p, e in enumerate(alunos):
-                if e[1] == cpf_aluno:
-                    print('---- Aluno encontrado ----')
-                    novo_nome = input('Digite o novo nome:')
-                    novo_cpf = input('Digite o novo CPF:')
-                    while novo_cpf.isdigit() is False:
-                        novo_cpf = pedir_CPF()                    
-                    alunos[p][0] = novo_nome
-                    alunos[p][1] = novo_cpf
-                    print('---- Cadastro Atualizado ----')
-                    c = 1
-                    if c != 1:
-                        print('---- Aluno ainda não encontrado... ----')
-                c = 0
+                while cpf_aluno.isdigit() is False:
+                    print('---- CPF Inválido ----')
+                    cpf_aluno = pedir_CPF()
+                c = False
+                for p, e in enumerate(alunos):
+                    if e[1] == cpf_aluno:
+                        print('---- Aluno encontrado ----')
+                        novo_nome = input('Digite o novo nome:')
+                        novo_cpf = input('Digite o novo CPF:')
+                        while novo_cpf.isdigit() is False:
+                            novo_cpf = pedir_CPF()                    
+                        alunos[p][0] = novo_nome
+                        alunos[p][1] = novo_cpf
+                        print('---- Cadastro Atualizado ----')
+                        c = True
+                if c == False:
+                    print('---- Aluno não encontrado ----')
 #--------------------------------------------------------------------------------------------                    
                                 #FUNLÃO DELETAR CADASTRO ALUNO
         def deleteA():                                                                                                   
             global alunos
-            print('---- Insira o CPF do cadastro a ser deletado ----')
-            cpf_aluno = pedir_CPF()
-            while cpf_aluno.isdigit() is False:
-                print('---- CPF Inválido ----')
+            if len(alunos) == 0:
+                print('---- Não há nenhum aluno cadastrado ----')
+            else:
+                print('---- Insira o CPF do cadastro a ser atualizado ----')
                 cpf_aluno = pedir_CPF()
-            c = False
-            for p, e in enumerate(alunos):
-            
-                if e[1] == cpf_aluno:
-                    del alunos[p]
-                    print('---- Cadastro Deletado ----')
-                    c = True
-            
-            if c == False:
-                print('---- Usuário não encontrado ----')
+                while cpf_aluno.isdigit() is False:
+                    print('---- CPF Inválido ----')
+                    cpf_aluno = pedir_CPF()
+                c = False
+                for p, e in enumerate(alunos):
+                    if e[1] == cpf_aluno:
+                        del alunos[p]
+                        print('---- Cadastro Deletado ----')
+                        c = True
+                if c == False:
+                    print('---- Cadastro não encontrado ----')
 #--------------------------------------------------------------------------------------------
                                     #OPERADOR ALUNOS
     
@@ -333,59 +320,61 @@ while True:
             codigo = pedir_codigo()
             if len(disciplina) == 0:
                 arquivo_d = open('disciplinas.txt', 'a')
-                arquivo_d.write('%s / %s\n' %(nome,codigo))
+                arquivo_d.write('Nome: %s / Código: %s\n' %(nome,codigo))
                 arquivo_d.close()
                 disciplina.append([nome, codigo])
                 print('---- Cadastro Realizado ----')
             else:
                 for p, e in enumerate(disciplina):
                     if e[1] == codigo:
-                        print('---- Disciplina já cadastrada ----')
+                        print('---- Código de disciplina já cadastrado ----')
                         c = 1
                 if c != 1:
                     arquivo_d = open('disciplinas.txt', 'a')
-                    arquivo_d.write('%s / %s\n' %(nome,codigo))
+                    arquivo_d.write('Nome: %s / Código: %s\n' %(nome,codigo))
                     arquivo_d.close()
                     disciplina.append([nome, codigo])
-                    print('---- Cadastro Realizado ----')
-                
+                    print('---- Cadastro Realizado ----')                
                 c = 0
 #--------------------------------------------------------------------------------------------
                                 #FUNÇÃO ATUALIZAR CADASTRO DISCIPLINA
         def updateD():                                                                                                   
             global disciplina
-            global c
-            print('---- Insira os dados a serem atualizados ----')
-            codigo = pedir_codigo()
-            for p, e in enumerate(disciplina):
-                if e[1] == codigo:
-                    print('---- Disciplina encontrada ----')
-                    novo_nome = input('Digite o novo nome:')
-                    novo_codigo = input('Digite o novo código:')
-                    disciplina[p][0] = novo_nome
-                    disciplina[p][1] = novo_codigo
-                    print('---- Cadastro Atualizado ----')
-                    c = 1
-                    if c == 0:
-                        print('---- Disciplina ainda não encontrada... ----')
-                c = 0
+            if len(disciplina) == 0:
+                print('---- Não há nenhuma disciplina cadastrada ----')
+            else:
+                print('---- Insira os dados a serem atualizados ----')
+                codigo = pedir_codigo()
+                c = False
+                for p, e in enumerate(disciplina):
+                    if e[1] == codigo:
+                        print('---- Disciplina encontrada ----')
+                        novo_nome = input('Digite o novo nome:')
+                        novo_codigo = input('Digite o novo código:')
+                        disciplina[p][0] = novo_nome
+                        disciplina[p][1] = novo_codigo
+                        print('---- Cadastro Atualizado ----')
+                        c = True
+                if c == False:
+                    print('---- Disciplina não encontrada ----')                    
 #--------------------------------------------------------------------------------------------
                                 #FUNÇÃO DELETAR CADASTRO DISCIPLINA
         def deleteD():                                                                                                   
             global disciplina
-            print('---- Insira o código da disciplina a ser deletada ----')
-            codigo = pedir_codigo()
-            c = False
-            for p, e in enumerate(disciplina):
+            if len(disciplina) == 0:
+                print('---- Não há nenhuma disciplina cadastrada ----')
+            else:
+                print('---- Insira o código da disciplina a ser atualizada ----')
+                codigo = pedir_codigo()
+                c = False
+                for p, e in enumerate(disciplina):
             
-                if e[1] == codigo:
-                    del disciplina[p]
-                    print('---- Disciplina Deletada ----')
-                    c = True
-            
-            if c == False:
-                print('---- Disciplina não encontrada ----')
-
+                    if e[1] == codigo:
+                        del disciplina[p]
+                        print('---- Disciplina Deletada ----')
+                        c = True            
+                if c == False:
+                    print('---- Disciplina não encontrada ----')
 #--------------------------------------------------------------------------------------------
                                     #OPERADOR DISCIPLINA
         while True:
@@ -435,23 +424,70 @@ while True:
                     cpf_aluno = pedir_CPF_aluno()
             if len(turmas) == 0:
                 arquivo_t = open('turmas.txt', 'a')
-                arquivo_t.write('%s / %s / %s / %s / %s\n' %(codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno))
+                arquivo_t.write('Código: %s / Período: %s / Disciplina: %s / CPF_Professor: %s / CPF_Aluno: %s\n' %(codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno))
                 arquivo_t.close()
                 turmas.append([codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno])
                 print('---- Cadastro Realizado ----')
             else:
                 for p, e in enumerate(turmas):
                     if e[0] == codigo_turma:
-                        print('---- Turma já cadastrada ----')
+                        print('---- Código de turma já cadastrado ----')
                         c = 1
                 if c != 1:
                     arquivo_t = open('turmas.txt', 'a')
-                    arquivo_t.write('%s / %s / %s / %s / %s\n' %(codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno))
+                    arquivo_t.write('Código: %s / Período: %s / Disciplina: %s / CPF_Professor: %s / CPF_Aluno: %s\n' %(codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno))
                     arquivo_t.close()
                     turmas.append([codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno])
                     print('---- Cadastro Realizado ----')
                 c = 0
-
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                            #FUNÇÃO ATUALIZAR CADASTRO TURMA
+        def updateT():
+            global turmas
+            if len(turmas) == 0:
+                print('---- Não há nenhuma turma cadastrada ----')
+            else:
+                print('---- Insira os dados a serem cadastrados ----')
+                codigo_turma = pedir_codturma()
+                c = False
+                for p, e in enumerate(turmas):
+                    if e[0] == codigo_turma:
+                        print('---- Turma Encontrada ----')
+                        novo_codigo = input('Digite o novo código para a turma:')
+                        novo_periodo = input('Digite o período:')
+                        nova_disciplina = input('Digite o código da disciplina:')
+                        QtdCPFP = int(input('Digite quantos CPFs de Professores serão cadastrados na turma:'))
+                        for i in range(QtdCPFP):
+                            novo_cpf_professor = pedir_CPF_professor()
+                            while novo_cpf_professor.isdigit() is False:
+                                print('---- CPF Inválido ----')
+                                cpf_professor = pedir_CPF_professor()
+                        QtdCPFA = int(input('Digite quantos CPFs de Alunos serão cadastrados na turma:'))
+                        for i in range(QtdCPFA):
+                            novo_cpf_aluno = pedir_CPF_aluno()
+                            while novo_cpf_aluno.isdigit() is False:
+                                print('---- CPF Inválido ----')
+                                cpf_professor = pedir_CPF_professor()
+                        turmas[p][0] = novo_codigo
+                        turmas[p][1] = novo_periodo
+                        turmas[p][2] = nova_disciplina
+                        turmas[p][3] = novo_cpf_professor
+                        turmas[p][4] = novo_cpf_aluno
+                        print('---- Cadastro Atualizado ----')
+                        c = True
+                if c == False:
+                    print('---- Turma não encontrada ----')
+                    
+#------------------------------------------------------------------------------------------------------------------------
+                                #FUNÇÃO DELETAR CADASTRO TURMA
+        def deleteT():
+            global turmas
+            if len(turmas) == 0:
+                print('---- Não há nenhuma turma cadastrada ----')
+            else:
+                print('---- Insira o CPF do cadastro a ser atualizado ----')                                           
+#----------------------------------------------------------------------------------------------------------------------------------------------
+                              #OPERADOR TURMAS
         while True:
             v = int(input('Digite a operação para TURMAS:'))
             if v == 0:
@@ -460,7 +496,7 @@ while True:
                 createT()
                 continue
             elif v == 2:
-                updateA()
+                updateT()
                 continue
             elif v == 3:
                 if len(turmas) == 0:
@@ -473,4 +509,5 @@ while True:
                             print('CPF:   %s                  CPF:   %s' %(e[3],e[4]))
                 continue
             elif v == 4:
-                deleteA()
+                deleteT()
+
