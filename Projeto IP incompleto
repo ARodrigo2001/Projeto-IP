@@ -97,6 +97,12 @@ turmas = []
 disciplina = []
 
 #PROFESSOR:
+arquivo_p = open('professores.txt','a')
+arquivo_p = open('professores.txt','r')
+for linha in arquivo_p.readline():
+    dados = linha.split()
+    professores.append([dados[0],dados[1],dados[2]])
+
 
 #--------------------------------------------------------------------------------------------
                                 #FUNÇÃO CRIAR CADASTRO PROFESSOR
