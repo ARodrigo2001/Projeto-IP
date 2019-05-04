@@ -1,4 +1,3 @@
-
 #Projeto IP
 def menu_principal():
     return print('''
@@ -99,9 +98,27 @@ disciplina = []
 #PROFESSOR:
 arquivo_p = open('professores.txt','a')
 arquivo_p = open('professores.txt','r')
-for linha in arquivo_p.readline():
-    dados = linha.split()
-    professores.append([dados[0],dados[1],dados[2]])
+for linha in arquivo_p.readlines():
+    professores.append(linha.split())
+arquivo_p.close()
+#ALUNOS:
+arquivo_a = open('alunos.txt','a')
+arquivo_a = open('alunos.txt','r')
+for linha in arquivo_a.readlines():
+    alunos.append(linha.split())
+arquivo_a.close()
+#DISCIPLINAS
+arquivo_d = open('disciplinas.txt','a')
+arquivo_d = open('disciplinas.txt','r')
+for linha in arquivo_d.readlines():
+    disciplina.append(linha.split())
+arquivo_d.close()
+#TURMAS
+arquivo_t = open('turmas.txt','a')
+arquivo_t = open('turmas.txt','r')
+for linha in arquivo_t.readlines():
+    turmas.append(linha.split())
+arquivo_t.close()
 
 
 #--------------------------------------------------------------------------------------------
@@ -203,7 +220,7 @@ while True:
                         c = True
                 if c == False:
                     print('---- Professor não encontrado ----')
-                          
+                                                                                                        
 #--------------------------------------------------------------------------------------------
                                         #OPERADOR PROFESSORES    
         while True:
@@ -243,7 +260,7 @@ while True:
                 cpf_aluno = pedir_CPF()
             if len(alunos) == 0:
                 arquivo_a = open('alunos.txt', 'a')
-                arquivo_a.write('%s / %s\n' %(nome_aluno, cpf_aluno))
+                arquivo_a.write('%s  %s\n' %(nome_aluno, cpf_aluno))
                 arquivo_a.close()
                 alunos.append([nome_aluno, cpf_aluno])
                 print('---- Cadastro Realizado ----')
@@ -329,7 +346,7 @@ while True:
                     print('---- Não há nenhum aluno cadastrado ----')
                 else:
                     for p, e in enumerate(alunos):
-                        print('Aluno(a): %s    CPF: %s' %(e[0], e[1]))
+                        print('Aluno(a): %s CPF: %s' %(e[0], e[1]))
                 continue
             elif v == 4:
                 deleteA()
@@ -347,7 +364,7 @@ while True:
             codigo = pedir_codigo()
             if len(disciplina) == 0:
                 arquivo_d = open('disciplinas.txt', 'a')
-                arquivo_d.write('%s / %s\n' %(nome,codigo))
+                arquivo_d.write('%s  %s\n' %(nome,codigo))
                 arquivo_d.close()
                 disciplina.append([nome, codigo])
                 print('---- Cadastro Realizado ----')
@@ -552,9 +569,9 @@ while True:
                 else:
                     for p, e in enumerate(turmas):
                         print('Código da Turma: %s Período: %s Código da Disciplina: %s ' %(e[0], e[1], e[2]))
-                        print('---- PROFESSORES ----  /   ---- ALUNOS ----')
+                        print('----------- PROFESSORES -----------  /  ----------- ALUNOS -----------')
                         for p, e in enumerate(turmas):
-                            print('CPF:   %s                  CPF:   %s' %(e[3],e[4]))
+                            print('CPF:   %s                              CPF:   %s' %(e[3],e[4]))
                 continue
             elif v == 4:
                 deleteT()
@@ -564,4 +581,3 @@ while True:
 #	Falta a geração da ATA
 #	Falta mostrar lista de turmas por professor
 #	Falta mostrar lista de disciplinas por aluno
-
