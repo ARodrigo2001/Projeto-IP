@@ -581,3 +581,4 @@ while True:
 #	Falta a geração da ATA
 #	Falta mostrar lista de turmas por professor
 #	Falta mostrar lista de disciplinas por aluno
+#   Não consigo listar nomes compostos a partir da leitura do arquivo
