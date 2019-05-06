@@ -537,7 +537,6 @@ while True:
                     cpf_aluno = pedir_CPF_aluno()
                 for p, e in enumerate(alunos):
                     if e[1] == cpf_aluno:
-                        turmas.append(cpf_aluno)
                         print('---- Aluno(s) cadastrado(s) ----')
                         z1 = 1
                         continue
@@ -554,7 +553,7 @@ while True:
                 arquivo_t.write('%s  %s  %s  %s  %s\n' %(codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno))
                 arquivo_t.close()
                 turmas.append([codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno])
-                print('---- Cadastro Realizdo ----')
+                print('---- Cadastro Realizado ----')
             else:
                 for p, e in enumerate(turmas):
                     if e[0] == codigo_turma:
@@ -590,8 +589,8 @@ while True:
                             print('---- Período inválido(apenas números) ----')
                             novo_periodo = pedir_periodo()
                         nova_disciplina = input('Digite o código da disciplina:')
-                        QtdCPFP = int(input('Digite quantos CPFs de Professores serão cadastrados na turma:'))
-                        for i in range(QtdCPFP):
+                        CPFs_P = int(input('Digite quantos CPFs de Professores serão cadastrados na turma:'))
+                        for i in range(CPFs_P):
                             novo_cpf_professor = pedir_CPF_professor()
                             while novo_cpf_professor.isdigit() is False:
                                 print('---- CPF Inválido ----')
@@ -602,8 +601,8 @@ while True:
                             for p, e in enumerate(alunos):
                                 if e[1] != CPFs_P:
                                     print('---- CPF não cadastrado ----')
-                        QtdCPFA = int(input('Digite quantos CPFs de Alunos serão cadastrados na turma:'))
-                        for i in range(QtdCPFA):
+                        CPFs_A = int(input('Digite quantos CPFs de Alunos serão cadastrados na turma:'))
+                        for i in range(CPFs_A):
                             novo_cpf_aluno = pedir_CPF_aluno()
                             while novo_cpf_aluno.isdigit() is False:
                                 print('---- CPF Inválido ----')
