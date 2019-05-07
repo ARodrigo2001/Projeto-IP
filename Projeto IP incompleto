@@ -92,7 +92,6 @@ def pedir_CPF_aluno():
                                 #LISTAS E LEITURAS
 professores = []
 alunos = []
-turmasM = []
 turmas = []
 disciplina = []
 
@@ -100,25 +99,25 @@ disciplina = []
 arquivo_p = open('professores.txt','a')
 arquivo_p = open('professores.txt','r')
 for linha in arquivo_p.readlines():
-    professores.append(linha.split())
+    professores.append(linha.split('-'))
 arquivo_p.close()
 #ALUNOS:
 arquivo_a = open('alunos.txt','a')
 arquivo_a = open('alunos.txt','r')
 for linha in arquivo_a.readlines():
-    alunos.append(linha.split())
+    alunos.append(linha.split('-'))
 arquivo_a.close()
 #DISCIPLINAS
 arquivo_d = open('disciplinas.txt','a')
 arquivo_d = open('disciplinas.txt','r')
 for linha in arquivo_d.readlines():
-    disciplina.append(linha.split())
+    disciplina.append(linha.split('-'))
 arquivo_d.close()
 #TURMAS
 arquivo_t = open('turmas.txt','a')
 arquivo_t = open('turmas.txt','r')
 for linha in arquivo_t.readlines():
-    turmas.append(linha.split())
+    turmas.append(linha.split('-'))
 arquivo_t.close()
 
 
@@ -147,7 +146,7 @@ while True:
             departamento_professor = pedir_departamento()
             if len(professores) and len(alunos) == 0:
                 arquivo_p = open('professores.txt', 'a')
-                arquivo_p.write('%s  %s  %s\n' %(nome_professor, cpf_professor, departamento_professor))
+                arquivo_p.write('%s-%s-%s\n' %(nome_professor, cpf_professor, departamento_professor))
                 arquivo_p.close()
                 professores.append([nome_professor, cpf_professor, departamento_professor])
                 print('---- Cadastro Realizado ----')
@@ -162,7 +161,7 @@ while True:
                         c = 1
                 if c != 1:
                     arquivo_p = open('professores.txt', 'a')
-                    arquivo_p.write('%s  %s  %s\n' %(nome_professor, cpf_professor, departamento_professor))
+                    arquivo_p.write('%s-%s-%s\n' %(nome_professor, cpf_professor, departamento_professor))
                     arquivo_p.close()
                     professores.append([nome_professor, cpf_professor, departamento_professor])
                     print('---- Cadastro Realizado ----')
@@ -204,7 +203,7 @@ while True:
                             professores[p][1] = novo_cpf
                             professores[p][2] = novo_departamento
                             arquivo_p = open('professores.txt', '+r')
-                            arquivo_p.write('%s  %s  %s\n' %(novo_nome, novo_cpf, novo_departamento))
+                            arquivo_p.write('%s-%s-%s\n' %(novo_nome, novo_cpf, novo_departamento))
                             arquivo_p.close()
                             print('---- Cadastro Atualizado ----')
                         c = True
@@ -274,7 +273,7 @@ while True:
                 cpf_aluno = pedir_CPF()
             if len(alunos) and len(professores) == 0:
                 arquivo_a = open('alunos.txt', 'a')
-                arquivo_a.write('%s  %s\n' %(nome_aluno, cpf_aluno))
+                arquivo_a.write('%s-%s\n' %(nome_aluno, cpf_aluno))
                 arquivo_a.close()
                 alunos.append([nome_aluno, cpf_aluno])
                 print('---- Cadastro Realizado ----')
@@ -289,7 +288,7 @@ while True:
                         c = 1
                 if c != 1:
                     arquivo_a = open('alunos.txt', 'a')
-                    arquivo_a.write('%s  %s\n' %(nome_aluno, cpf_aluno))
+                    arquivo_a.write('%s-%s\n' %(nome_aluno, cpf_aluno))
                     arquivo_a.close()
                     alunos.append([nome_aluno, cpf_aluno])
                     print('---- Cadastro Realizado ----')
@@ -389,7 +388,7 @@ while True:
             codigo = pedir_codigo()
             if len(disciplina) == 0:
                 arquivo_d = open('disciplinas.txt', 'a')
-                arquivo_d.write('%s  %s\n' %(nome,codigo))
+                arquivo_d.write('%s-%s\n' %(nome,codigo))
                 arquivo_d.close()
                 disciplina.append([nome, codigo])
                 print('---- Cadastro Realizado ----')
@@ -400,7 +399,7 @@ while True:
                         c = 1
                 if c != 1:
                     arquivo_d = open('disciplinas.txt', 'a')
-                    arquivo_d.write('%s  %s\n' %(nome,codigo))
+                    arquivo_d.write('%s-%s\n' %(nome,codigo))
                     arquivo_d.close()
                     disciplina.append([nome, codigo])
                     print('---- Cadastro Realizado ----')                
@@ -550,7 +549,7 @@ while True:
                         
             if len(turmas) == 0:
                 arquivo_t = open('turmas.txt', 'a')
-                arquivo_t.write('%s  %s  %s  %s  %s\n' %(codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno))
+                arquivo_t.write('%s-%s-%s-%s-%s\n' %(codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno))
                 arquivo_t.close()
                 turmas.append([codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno])
                 print('---- Cadastro Realizado ----')
@@ -561,7 +560,7 @@ while True:
                         c = 1
                 if c != 1:
                     arquivo_t = open('turmas.txt', 'a')
-                    arquivo_t.write('%s  %s  %s  %s %s\n' %(codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno))
+                    arquivo_t.write('%s-%s-%s-%s-s\n' %(codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno))
                     arquivo_t.close()
                     turmas.append([codigo_turma, periodo, codigo_disciplina, cpf_professor, cpf_aluno])
                     print('---- Cadastro Realizado ----')
@@ -667,8 +666,9 @@ while True:
                 print('---- Operação Inválida ----')
                 
 #Bugs = Em memória falta ajeitar TURMAS no armazenamento dos dados da turma
+                #Formatação para CPF alunos em turma = turmas[4][:len(turmas[4])-1] + "'" + cpf_aluno + "'" + "," + "]"
 #	Falta adicionar a função para deletar e atualizar em arquivo em todos
 #	Falta a geração da ATA
 #	Falta mostrar lista de turmas por professor
-#	Falta mostrar lista de disciplinas por aluno
-#   Não consigo listar nomes compostos a partir da leitura do arquivo
+#	Falta mostrar lista de disciplinas por aluno#   Não consigo listar nomes compostos a partir da leitura do arquivo
+#       Bug no contador de disciplinas na hora do cadastro dela e de turma
