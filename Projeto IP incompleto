@@ -1,3 +1,4 @@
+
 #Projeto IP
 def menu_principal():
     return print('''
@@ -99,25 +100,25 @@ disciplina = []
 arquivo_p = open('professores.txt','a')
 arquivo_p = open('professores.txt','r')
 for linha in arquivo_p.readlines():
-    professores.append(linha.split('-'))
+    professores.append(linha.rstrip("\n").split('-'))    
 arquivo_p.close()
 #ALUNOS:
 arquivo_a = open('alunos.txt','a')
 arquivo_a = open('alunos.txt','r')
 for linha in arquivo_a.readlines():
-    alunos.append(linha.split('-'))
+    alunos.append(linha.rstrip("/n").split('-'))
 arquivo_a.close()
 #DISCIPLINAS
 arquivo_d = open('disciplinas.txt','a')
 arquivo_d = open('disciplinas.txt','r')
 for linha in arquivo_d.readlines():
-    disciplina.append(linha.split('-'))
+    disciplina.append(linha.rstrip("/n").split('-'))
 arquivo_d.close()
 #TURMAS
 arquivo_t = open('turmas.txt','a')
 arquivo_t = open('turmas.txt','r')
 for linha in arquivo_t.readlines():
-    turmas.append(linha.split('-'))
+    turmas.append(linha.rstrip("/n").split('-'))
 arquivo_t.close()
 
 
@@ -202,7 +203,7 @@ while True:
                             professores[p][0] = novo_nome
                             professores[p][1] = novo_cpf
                             professores[p][2] = novo_departamento
-                            arquivo_p = open('professores.txt', '+r')
+                            arquivo_p = open('professores.txt', 'r+')
                             arquivo_p.write('%s-%s-%s\n' %(novo_nome, novo_cpf, novo_departamento))
                             arquivo_p.close()
                             print('---- Cadastro Atualizado ----')
@@ -673,3 +674,4 @@ while True:
 #	Falta mostrar lista de disciplinas por aluno#   Não consigo listar nomes compostos a partir da leitura do arquivo
 #       Bug no contador de disciplinas na hora do cadastro dela e de turma
 # Linux Ubuntu
+
