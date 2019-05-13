@@ -1,4 +1,5 @@
 
+
 #Projeto IP
 def menu_principal():
     return print('''
@@ -156,10 +157,11 @@ while True:
                     if e[1] == cpf_professor:
                         print('---- CPF já cadastrado ----')
                         c = 1
-                for p, e in enumerate(professores):
-                    if e[1] == cpf_professor:
-                        print('---- CPF já cadastrado ----')
-                        c = 1
+                if c != 1:
+                    for p, e in enumerate(professores):
+                        if e[1] == cpf_professor:
+                            print('---- CPF já cadastrado ----')
+                            c = 1
                 if c != 1:
                     arquivo_p = open('professores.txt', 'a')
                     arquivo_p.write('%s-%s-%s\n' %(nome_professor, cpf_professor, departamento_professor))
@@ -191,21 +193,21 @@ while True:
                         while novo_cpf.isdigit() is False:
                             novo_cpf = pedir_CPF()
                         novo_departamento = input('Digite o novo departamento:')
-                        for p, e in enumerate(alunos):
-                            if e[1] == novo_cpf:
+                        for j, k in enumerate(alunos):
+                            if k[1] == novo_cpf:
                                 print('---- CPF já cadastrado ----')
                                 c2 = 1
-                        for p, e in enumerate(professores):
-                            if e[1] == novo_cpf:
-                                print('---- CPF já cadastrado ----')
-                                c2 = 1
+                                break
+                        if c2 != 1:
+                            for j, k in enumerate(professores):
+                                if k[1] == novo_cpf:
+                                    print('---- CPF já cadastrado ----')
+                                    c2 = 1
+                                    break
                         if c2 != 1:
                             professores[p][0] = novo_nome
                             professores[p][1] = novo_cpf
                             professores[p][2] = novo_departamento
-                            arquivo_p = open('professores.txt', 'r+')
-                            arquivo_p.write('%s-%s-%s\n' %(novo_nome, novo_cpf, novo_departamento))
-                            arquivo_p.close()
                             print('---- Cadastro Atualizado ----')
                         c = True
                 if c == False:
@@ -283,10 +285,11 @@ while True:
                     if e[1] == cpf_aluno:
                         print('---- CPF já cadastrado ----')
                         c = 1
-                for p, e in enumerate(alunos):
-                    if e[1] == cpf_aluno:
-                        print('---- CPF já cadastrado ----')
-                        c = 1
+                if c != 1:
+                    for p, e in enumerate(alunos):
+                        if e[1] == cpf_aluno:
+                            print('---- CPF já cadastrado ----')
+                            c = 1
                 if c != 1:
                     arquivo_a = open('alunos.txt', 'a')
                     arquivo_a.write('%s-%s\n' %(nome_aluno, cpf_aluno))
@@ -316,12 +319,12 @@ while True:
                         novo_cpf = input('Digite o novo CPF:')
                         while novo_cpf.isdigit() is False:
                             novo_cpf = pedir_CPF()
-                        for p, e in enumerate(alunos):
-                            if e[1] == novo_cpf:
+                        for j, k in enumerate(alunos):
+                            if k[1] == novo_cpf:
                                 print('---- CPF já cadastrado ----')
                                 c2 = 1
-                        for p, e in enumerate(professores):
-                            if e[1] == novo_cpf:
+                        for j, k in enumerate(professores):
+                            if k[1] == novo_cpf:
                                 print('---- CPF já cadastrado ----')
                                 c2 = 1
                         if c2 != 1:
