@@ -107,19 +107,19 @@ arquivo_p.close()
 arquivo_a = open('alunos.txt','a')
 arquivo_a = open('alunos.txt','r')
 for linha in arquivo_a.readlines():
-    alunos.append(linha.rstrip("/n").split('-'))
+    alunos.append(linha.rstrip("\n").split('-'))
 arquivo_a.close()
 #DISCIPLINAS
 arquivo_d = open('disciplinas.txt','a')
 arquivo_d = open('disciplinas.txt','r')
 for linha in arquivo_d.readlines():
-    disciplina.append(linha.rstrip("/n").split('-'))
+    disciplina.append(linha.rstrip("\n").split('-'))
 arquivo_d.close()
 #TURMAS
 arquivo_t = open('turmas.txt','a')
 arquivo_t = open('turmas.txt','r')
 for linha in arquivo_t.readlines():
-    turmas.append(linha.rstrip("/n").split('-'))
+    turmas.append(linha.rstrip("\n").split('-'))
 arquivo_t.close()
 
 
@@ -424,8 +424,8 @@ while True:
                         print('---- Disciplina encontrada ----')
                         novo_nome = input('Digite o novo nome:')
                         novo_codigo = input('Digite o novo código:')
-                        for p, e in enumerate(disciplina):
-                            if e[1] == novo_codigo:
+                        for j, k in enumerate(disciplina):
+                            if k[1] == novo_codigo:
                                 print('---- Código de disciplina já cadastrado ----')
                                 c2 = 1
                         if c2 != 1:
