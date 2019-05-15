@@ -501,8 +501,10 @@ while True:
                 print('---- Período inválido(apenas números) ----')
                 periodo = pedir_periodo()
             codigo_disciplina = pedir_codigo()
-            for p, e in enumerate(disciplina):
-                while e[1] != codigo_disciplina:
+            for o, u in enumerate(disciplina):
+                if u[1] == codigo_disciplina:
+                    break
+                else:
                     print('---- Disciplina não cadastrada ----')
                     codigo_disciplina = pedir_codigo()
             cpfsp = []
