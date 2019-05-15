@@ -493,7 +493,7 @@ while True:
             print('---- Insira os dados a serem cadastrados ----')
             codigo_turma = pedir_codturma()
             for p, e in enumerate(turmas):
-                if l[0] == codigo_turma:
+                if e[0] == codigo_turma:
                     print('---- Código de turma já cadastrado ----')
                     codigo_turma = pedir_codturma()
             periodo = pedir_periodo()
@@ -583,45 +583,70 @@ while True:
             if len(turmas) == 0:
                 print('---- Não há nenhuma turma cadastrada ----')
             else:
-                print('---- Insira os dados a serem cadastrados ----')
-                codigo_turma = pedir_codturma()
+                print('---- Insira os dados a serem atualizados ----')
                 c = False
-                c2 = 0
-                for p, e in enumerate(turmas):
-                    if e[0] == codigo_turma:
+                codigo_turma = pedir_codturma()
+                for t, g in enumerate(turmas):
+                    if g[0] == codigo_turma:
                         print('---- Turma Encontrada ----')
                         novo_codigo = input('Digite o novo código para a turma:')
-                        while novo_codigo.isdigit() is False:
-                            print('---- Código inválido(apenas números) ----')
-                            novo_codigo = pedir_codigo()
                         novo_periodo = input('Digite o período:')
                         while novo_periodo.isdigit() is False:
                             print('---- Período inválido(apenas números) ----')
                             novo_periodo = pedir_periodo()
                         nova_disciplina = input('Digite o código da disciplina:')
+                        valord = False
+                        while valord == False:
+                            for y, x in enumerate(disciplina):
+                                if x[1] == nova_disciplina:
+                                    valord = True
+                            if valord != True:
+                                print('---- Disciplina não cadastrada ----')
+                                nova_disciplina = input('Digite o código da disciplina:')
+                        cpfsp = []
                         CPFs_P = int(input('Digite quantos CPFs de Professores serão cadastrados na turma:'))
-                        for i in range(CPFs_P):
-                            novo_cpf_professor = pedir_CPF_professor()
-                            while novo_cpf_professor.isdigit() is False:
-                                print('---- CPF Inválido ----')
-                                cpf_professor = pedir_CPF_professor()
-                            for p, e in enumerate(professores):
-                                if e[1] != CPFs_P:
+                        while CPFs_P > len(professores) or CPFs_P == 0:
+                            print('---- Valor inválido ou Não há professores suficiente  ----')
+                            CPFs_P = int(input('Digite quantos CPFs de PROFESSORES serão cadastrados na turma:'))
+                        for s in range(CPFs_P):
+                            r = False
+                            while r == False:
+                                novo_cpf_professor = pedir_CPF_professor()
+                                while novo_cpf_professor.isdigit() is False:
+                                    print('---- CPF Inválido ----')
+                                    cpf_professor = pedir_CPF_professor()
+                                    
+                                for o, i in enumerate(professores):
+                                    if i[1] == novo_cpf_professor:
+                                        print('---- Professor(es) cadastrado(s) ----')
+                                        cpfsp.append(novo_cpf_professor)
+                                        r = True
+                                
+                                if r != True:
                                     print('---- CPF não cadastrado ----')
-                            for p, e in enumerate(alunos):
-                                if e[1] != CPFs_P:
-                                    print('---- CPF não cadastrado ----')
+                                    continue
+                        cpfsa = []           
                         CPFs_A = int(input('Digite quantos CPFs de Alunos serão cadastrados na turma:'))
-                        for i in range(CPFs_A):
-                            novo_cpf_aluno = pedir_CPF_aluno()
-                            while novo_cpf_aluno.isdigit() is False:
-                                print('---- CPF Inválido ----')
-                                cpf_professor = pedir_CPF_professor()
-                        for p, e in enumerate(turmas):
-                            if e[0] == novo_codigo:
-                                print('---- Código de turma já cadastrado ----')
-                                c2 = 1
-                        if c2 != 1:
+                        while CPFs_A > len(alunos) or CPFs_A == 0:
+                            print('---- Valor inválido ou Não há alunos suficientes ----')
+                            CPFs_A = int(input('Digite quantos CPFs de ALUNOS serão cadastrados na turma:'))
+                        for ç in range(CPFs_A):
+                            w = False
+                            while w == False:
+                                novo_cpf_aluno = pedir_CPF_aluno()
+                                while novo_cpf_aluno.isdigit() is False:
+                                    print('---- CPF Inválido ----')
+                                    novo_cpf_aluno = pedir_CPF_aluno()
+                                    
+                                for u, k in enumerate(alunos):
+                                    if k[1] == novo_cpf_aluno:
+                                        print('---- Aluno(s) cadastrado(s) ----')
+                                        cpfsa.append(novo_cpf_aluno)
+                                        w = True
+                                if w != True:
+                                    print('---- CPF não cadastrado ----')
+                                    continue
+                        if w == True:
                             turmas[p][0] = novo_codigo
                             turmas[p][1] = novo_periodo
                             turmas[p][2] = nova_disciplina
@@ -629,8 +654,9 @@ while True:
                             turmas[p][4] = novo_cpf_aluno
                             print('---- Turma Atualizada ----')
                         c = True
-                if c == False:
-                    print('---- Turma não encontrada ----')
+            if c == False:
+                print('---- Turma não encontrada ----')
+        
                     
 #------------------------------------------------------------------------------------------------------------------------
                                 #FUNÇÃO DELETAR CADASTRO TURMA
