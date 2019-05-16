@@ -62,7 +62,7 @@ def menu_turma():
 2 - Atualiza
 3 - Consulta
 4 - Deleta
-5 - Gerar Ata de Exercício
+5 - Gerar Ata de Exercício(NÃO ESTÁ FUNCIONANDO)
 0 - Menu Principal
 ''')
 #--------------------------------------------------------------------------------------------
@@ -655,26 +655,29 @@ while True:
                 if c == False:
                     print('---- Turma não encontrada ----')
 #----------------------------------------------------------------------------------------------------------------------------------------------
-                                #FUNÇÃO GERAR ATA DE EXERCÍDIO
+                                #FUNÇÃO GERAR ATA DE EXERCÍDIO #INCOMPLETO
         def ata():
     
             global turmas
             global professores
             global alunos
             global disciplina
+            global professor
             g = int(input('Digite o código da turma para gerar a ata de exercício:'))
-            del turmas[3][0]
             
-            for y, u in turmas:
-                if u[0] != g:
+            
+            for y in turmas:
+                if g in turmas == False:
                     print('---- Turma não encontrada ----')
                     break
                 else:
-                    print('==== UNIVERSIDADE FEDERAL RURAL DE PERNAMBUCO - UFRPE ====')
-                    print('==========================================================')
-                    print('------ TURMA:%s PERÍODO:%s DISCIPLINA:%s -----' %(u[0], u[1], u[2]))
-                    for g, a in enumerate(turmas[3]):
-                        print('--PROFESSOR(A): %s' %a[0])   
+                    for a, b in enumerate(turmas):
+                        print('==== UNIVERSIDADE FEDERAL RURAL DE PERNAMBUCO - UFRPE ====')
+                        print('==========================================================')
+                        print('   ------ TURMA:%s PERÍODO:%s DISCIPLINA:%s -----' %(b[0], b[1], b[2]))
+                        print('  PROFESSOR(A) :%s                         ALUNOS:' %(professor))
+                        for u, i in enumerate(turmas):
+                            print('                                       %s' %i[4])                                 
                 
                 
             
@@ -699,7 +702,7 @@ while True:
                     for p, e in enumerate(turmas):   
                         print('===========================================================')
                         print(' Código da Turma: %s Período: %s Código da Disciplina: %s ' %(e[0], e[1], e[2]))
-                        print('---- PROFESSOR(A) ----- CPF ------  /  ----- ALUNOS ----- ')
+                        print('---- PROFESSOR(A) CPF ------  /  ----- ALUNOS ----- ')
                         print(' %s         CPFs:   %s             ' %(e[3] ,e[4]))
                         print('===========================================================')
                 continue
@@ -715,4 +718,7 @@ while True:
 #	Falta a geração da ATA
 #	Falta mostrar lista de turmas por professor
 #	Falta mostrar lista de disciplinas por aluno
+
+
+
 
