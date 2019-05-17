@@ -1,4 +1,4 @@
- 
+
 #Projeto IP
 def menu_principal():
     return print('''
@@ -289,13 +289,13 @@ while True:
                         if e[1] == cpf_aluno:
                             print('---- CPF já cadastrado ----')
                             c = 1
-                if c != 1:
-                    arquivo_a = open('alunos.txt', 'a')
-                    arquivo_a.write('%s-%s\n' %(nome_aluno, cpf_aluno))
-                    arquivo_a.close()
-                    alunos.append([nome_aluno, cpf_aluno])
-                    print('---- Cadastro Realizado ----')
-                c = 0
+            if c != 1:
+                arquivo_a = open('alunos.txt', 'a')
+                arquivo_a.write('%s-%s\n' %(nome_aluno, cpf_aluno))
+                arquivo_a.close()
+                alunos.append([nome_aluno, cpf_aluno])
+                print('---- Cadastro Realizado ----')
+            c = 0
 #--------------------------------------------------------------------------------------------
                                         #FUNÇÃO ATUALIZAR CADASTRO ALUNO
         def updateA():
@@ -340,7 +340,7 @@ while True:
             if len(alunos) == 0:
                 print('---- Não há nenhum aluno cadastrado ----')
             else:
-                print('---- Insira o CPF do cadastro a ser atualizado ----')
+                print('---- Insira o CPF do cadastro a ser deletado ----')
                 cpf_aluno = pedir_CPF()
                 while cpf_aluno.isdigit() is False:
                     print('---- CPF Inválido ----')
@@ -441,7 +441,7 @@ while True:
             if len(disciplina) == 0:
                 print('---- Não há nenhuma disciplina cadastrada ----')
             else:
-                print('---- Insira o código da disciplina a ser atualizada ----')
+                print('---- Insira o código da disciplina a ser deletado ----')
                 codigo = pedir_codigo()
                 c = False
                 for p, e in enumerate(disciplina):
