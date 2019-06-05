@@ -1,0 +1,35 @@
+#--------------------------------------------------------------------------------------------
+                                        #FUNÇÕES INPUT
+def pedir_nome():                           
+    return(input('Digite o nome(apenas letras):'))
+    
+def pedir_CPF():                            
+    return(input('Digite o CPF(apenas dígitos):'))
+
+def pedir_departamento():                   
+    return(input('Digite o departamento:'))
+
+def pedir_codigo():
+    return(input('Digite o código da disciplina:'))
+
+def pedir_codturma():
+    return(input('Digite o código da turma:'))
+
+def pedir_periodo():
+    return(input('Digite o período(dígito):'))
+
+def pedir_CPF_professor():
+    return(input('Digite o CPF do Professor(apenas dígitos):'))
+
+def pedir_CPF_aluno():
+    return (input('Digite o CPF do Aluno(apenas dígitos):'))
+#-----------------------------------------------------------------------------------------
+class Aluno:
+    def __init__(aluno, nome, cpf):
+        aluno.nome = pedir_nome()
+        aluno.CPF = pedir_CPF()
+        
+    def consultar(self):
+        print('Nome: %s  CPF: %s' %(self.nome, self.CPF))
+aluno = Aluno('Arthur', '123')
+
