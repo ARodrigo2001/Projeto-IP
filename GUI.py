@@ -18,36 +18,44 @@ def bt_click_turmas():
 #----------------------------------------------------------------------------------------------------------------------------------------
                                                         #JANELA PRINCIPAL
 def main_window():
-       
+
     janela_principal = Tk()
     janela_principal.geometry('500x500+100+100')
+    janela_principal['bg']='white'
+    janela_principal.title('UFRPE - BSI')
     
-    lb1 = Label(janela_principal, text='==============================================================')
+    lb1 = Label(janela_principal, bg='red', text='==============================================================')
     lb1.place(x=0, y=0)
-    lb7 = Label(janela_principal, text='############ UNIVERSIDADE FEDERAL RURAL DE PERNAMBUCO - UFRPE ###############')
+    lb7 = Label(janela_principal, bg='red',text='############ UNIVERSIDADE FEDERAL RURAL DE PERNAMBUCO - UFRPE ###############')
     lb7.place(x=0, y=20)
-    lb4 = Label(janela_principal, text='==============================================================')
+    lb4 = Label(janela_principal, bg='red', text='==============================================================')
     lb4.place(x=0, y=80)
-    lb2 = Label(janela_principal, text='=============== /// SISTEMA DE CONTROLE ACADÊMICO /// ==================')
+    lb2 = Label(janela_principal, bg='red', text='=============== /// SISTEMA DE CONTROLE ACADÊMICO /// ==================')
     lb2.place(x=0, y=60)
-    lb3 = Label(janela_principal, text='==============================================================')
+    lb3 = Label(janela_principal, bg='red', text='==============================================================')
     lb3.place(x=0, y=40)
-    lb5 = Label(janela_principal, text='==============================================================')
+    lb5 = Label(janela_principal, bg='red',text='==============================================================')
     lb5.place(x=0, y=480)
-    logo = Label(janela_principal, text='UFRPE - BSI 2019.1')
+    logo = Label(janela_principal, bg='red',text='UFRPE - BSI 2019.1')
     logo.place(x=380, y=480)
-    
+
+    ufrpe_logo = PhotoImage(file = 'ufrpe_logo.gif')
+    ufrpe_logot = Label(janela_principal, image = ufrpe_logo, fg='white')
+
+    ufrpe_logot.image = ufrpe_logo
+    ufrpe_logot.place(x=315, y=130)
+      
     bt1 = Button(janela_principal, width=20, text='ALUNOS', command = bt_click)
-    bt1.place(x=170, y=150)
+    bt1.place(x=85, y=190)
     bt2 = Button(janela_principal, width=20, text='PROFESSORES', command= bt_click_professores)
-    bt2.place(x=170, y=190)
+    bt2.place(x=85, y=230)
     bt3 = Button(janela_principal, width=20, text='DISCIPLINAS', command= bt_click_disciplinas)
-    bt3.place(x=170, y=230)
+    bt3.place(x=85, y=270)
     bt4 = Button(janela_principal, width=20, text='TURMAS', command= bt_click_turmas)
-    bt4.place(x=170, y=270)
+    bt4.place(x=85, y=310)
     bt5 = Button(janela_principal, width=40, text='SAIR', command= exit)
-    bt5.place(x=100, y=400)
-    
+    bt5.place(x=10, y=400)
+
     janela_principal.mainloop()
 #----------------------------------------------------------------------------------------------------------------------------------------
                                                         #JANELA ALUNOS
@@ -55,19 +63,19 @@ def menu_alunos():
     janela_alunos = Tk()
     janela_alunos.geometry('500x500+100+100')
 
-    lb1 = Label(janela_alunos, text='==============================================================')
+    lb1 = Label(janela_alunos, bg='red',text='==============================================================')
     lb1.place(x=0, y=0)
-    lb7 = Label(janela_alunos, text='############ UNIVERSIDADE FEDERAL RURAL DE PERNAMBUCO - UFRPE ###############')
+    lb7 = Label(janela_alunos,bg='red', text='############ UNIVERSIDADE FEDERAL RURAL DE PERNAMBUCO - UFRPE ###############')
     lb7.place(x=0, y=20)
-    lb4 = Label(janela_alunos, text='==============================================================')
+    lb4 = Label(janela_alunos,bg='red', text='==============================================================')
     lb4.place(x=0, y=80)
-    lb2 = Label(janela_alunos, text='========================= /// ALUNOS /// ===========================')
+    lb2 = Label(janela_alunos,bg='red', text='========================= /// ALUNOS /// ===========================')
     lb2.place(x=0, y=60)
-    lb3 = Label(janela_alunos, text='==============================================================')
+    lb3 = Label(janela_alunos,bg='red', text='==============================================================')
     lb3.place(x=0, y=40)
-    lb5 = Label(janela_alunos, text='==============================================================')
+    lb5 = Label(janela_alunos,bg='red', text='==============================================================')
     lb5.place(x=0, y=480)
-    logo = Label(janela_alunos, text='UFRPE - BSI 2019.1')
+    logo = Label(janela_alunos, bg='red',text='UFRPE - BSI 2019.1')
     logo.place(x=380, y=480)
 
     bt1 = Button(janela_alunos, width=20, text='ADICIONAR', command= janela_add_aluno)
@@ -88,19 +96,19 @@ def menu_professores():
     janela_professores = Tk()
     janela_professores.geometry('500x500+100+100')
 
-    lb1 = Label(janela_professores, text='==============================================================')
+    lb1 = Label(janela_professores,bg='red', text='==============================================================')
     lb1.place(x=0, y=0)
-    lb7 = Label(janela_professores, text='############ UNIVERSIDADE FEDERAL RURAL DE PERNAMBUCO - UFRPE ###############')
+    lb7 = Label(janela_professores,bg='red', text='############ UNIVERSIDADE FEDERAL RURAL DE PERNAMBUCO - UFRPE ###############')
     lb7.place(x=0, y=20)
-    lb4 = Label(janela_professores, text='==============================================================')
+    lb4 = Label(janela_professores,bg='red', text='==============================================================')
     lb4.place(x=0, y=80)
-    lb2 = Label(janela_professores, text='========================= /// PROFESSORES /// ===========================')
+    lb2 = Label(janela_professores,bg='red', text='========================= /// PROFESSORES /// ===========================')
     lb2.place(x=0, y=60)
-    lb3 = Label(janela_professores, text='==============================================================')
+    lb3 = Label(janela_professores,bg='red', text='==============================================================')
     lb3.place(x=0, y=40)
-    lb5 = Label(janela_professores, text='==============================================================')
+    lb5 = Label(janela_professores,bg='red', text='==============================================================')
     lb5.place(x=0, y=480)
-    logo = Label(janela_professores, text='UFRPE - BSI 2019.1')
+    logo = Label(janela_professores,bg='red', text='UFRPE - BSI 2019.1')
     logo.place(x=380, y=480)
 
     bt1 = Button(janela_professores, width=20, text='ADICIONAR', command= janela_add_professor)
@@ -121,19 +129,19 @@ def menu_disciplinas():
     janela_disciplinas = Tk()
     janela_disciplinas.geometry('500x500+100+100')
 
-    lb1 = Label(janela_disciplinas, text='==============================================================')
+    lb1 = Label(janela_disciplinas,bg='red', text='==============================================================')
     lb1.place(x=0, y=0)
-    lb7 = Label(janela_disciplinas, text='############ UNIVERSIDADE FEDERAL RURAL DE PERNAMBUCO - UFRPE ###############')
+    lb7 = Label(janela_disciplinas,bg='red', text='############ UNIVERSIDADE FEDERAL RURAL DE PERNAMBUCO - UFRPE ###############')
     lb7.place(x=0, y=20)
-    lb4 = Label(janela_disciplinas, text='==============================================================')
+    lb4 = Label(janela_disciplinas,bg='red', text='==============================================================')
     lb4.place(x=0, y=80)
-    lb2 = Label(janela_disciplinas, text='========================= /// DISCIPLINAS /// ===========================')
+    lb2 = Label(janela_disciplinas,bg='red', text='========================= /// DISCIPLINAS /// ===========================')
     lb2.place(x=0, y=60)
-    lb3 = Label(janela_disciplinas, text='==============================================================')
+    lb3 = Label(janela_disciplinas,bg='red', text='==============================================================')
     lb3.place(x=0, y=40)
-    lb5 = Label(janela_disciplinas, text='==============================================================')
+    lb5 = Label(janela_disciplinas,bg='red', text='==============================================================')
     lb5.place(x=0, y=480)
-    logo = Label(janela_disciplinas, text='UFRPE - BSI 2019.1')
+    logo = Label(janela_disciplinas,bg='red', text='UFRPE - BSI 2019.1')
     logo.place(x=380, y=480)
 
     bt1 = Button(janela_disciplinas, width=20, text='ADICIONAR', command= janela_add_disciplina)
@@ -154,19 +162,19 @@ def menu_turmas():
     janela_turmas = Tk()
     janela_turmas.geometry('500x500+100+100')
 
-    lb1 = Label(janela_turmas, text='==============================================================')
+    lb1 = Label(janela_turmas, bg='red',text='==============================================================')
     lb1.place(x=0, y=0)
-    lb7 = Label(janela_turmas, text='############ UNIVERSIDADE FEDERAL RURAL DE PERNAMBUCO - UFRPE ###############')
+    lb7 = Label(janela_turmas,bg='red', text='############ UNIVERSIDADE FEDERAL RURAL DE PERNAMBUCO - UFRPE ###############')
     lb7.place(x=0, y=20)
-    lb4 = Label(janela_turmas, text='==============================================================')
+    lb4 = Label(janela_turmas,bg='red', text='==============================================================')
     lb4.place(x=0, y=80)
-    lb2 = Label(janela_turmas, text='========================= /// TURMAS /// ===========================')
+    lb2 = Label(janela_turmas,bg='red', text='========================= /// TURMAS /// ===========================')
     lb2.place(x=0, y=60)
-    lb3 = Label(janela_turmas, text='==============================================================')
+    lb3 = Label(janela_turmas,bg='red', text='==============================================================')
     lb3.place(x=0, y=40)
-    lb5 = Label(janela_turmas, text='==============================================================')
+    lb5 = Label(janela_turmas, bg='red',text='==============================================================')
     lb5.place(x=0, y=480)
-    logo = Label(janela_turmas, text='UFRPE - BSI 2019.1')
+    logo = Label(janela_turmas, bg='red',text='UFRPE - BSI 2019.1')
     logo.place(x=380, y=480)
 
     bt1 = Button(janela_turmas, width=20, text='ADICIONAR')
@@ -318,9 +326,7 @@ def janela_apagar_aluno():
 def janela_listar_alunos():
 
     janela = Tk()
-    janela.geometry('800x500+100+100')
-
-    
+    janela.geometry('800x500+100+100')   
     
     lb = Label(janela, text='=====================================================================================================')
     lb.place(x=0, y=0)
@@ -331,6 +337,10 @@ def janela_listar_alunos():
     logo = Label(janela, text='UFRPE - BSI 2019.1')
     logo.place(x=680, y=480)
 
+    registro = aluno.consultar()
+    listbox = Listbox(janela, width=120, height=25)
+    listbox.insert(0,registro)
+    listbox.place(x=28, y=50)
     janela.mainloop()
 #---------------------------------------------------------------------------------------------------------------
                                             #FUNÇÕES NA JANELA PROFESSOR(ADICIONAR)
