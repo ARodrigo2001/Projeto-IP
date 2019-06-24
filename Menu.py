@@ -1,7 +1,6 @@
 import sqlite3
-from classes import Aluno
-from classes import Professor
-from classes import Disciplina
+from classes import *
+
 #------------------------------------------------------------------------
                                       #FUNÇÕES MENU
 def menu_principal():
@@ -80,16 +79,16 @@ while True:
             op2 = input('Digite a operação para PROFESSORES:')
             if op2 == '1':
                 print('---- Insira os dados a serem cadastrados ----')
-                self.nome = pedir_nome()
-                self.cpf = pedir_CPF()
-                self.departamento = pedir_departamento()
+                professor.set_nome(input('Digite o nome:'))
+                professor.set_cpf(input('Digite o CPF:'))
+                professor.set_departamento(input('Digite o departamento:'))
                 professor.add_professor()
             elif op2 == '2':
                 print('---- Insira o CPF do professor a ser atualizado ----')
-                set_cpf(input('Digite o CPF:'))
-                set_nome = input('Digite o novo nome:')
-                set_cpf = int(input('Digite o novo CPF:'))
-                set_departamento = input('Digite o novo departamento:')
+                professor.set_cpf(input('Digite o CPF:'))
+                novo_nome = input('Digite o novo nome:')
+                novo_cpf = int(input('Digite o novo CPF:'))
+                novo_departamento = input('Digite o novo departamento:')
                 professor.att_professor(novo_nome, novo_cpf, novo_departamento)
 
             elif op2 == '3':
